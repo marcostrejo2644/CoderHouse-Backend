@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+
+  <script>
+    class Persona {
+      constructor(nombre, apellido, libros, mascotas){
+            this.nombre = nombre
+            this.apellido = apellido
+            this.libros = libros
+            this.mascotas = mascotas
+          }
+
+      getFullName(){
+        return `${this.nombre} ${this.apellido}`
+      }
+      
+      addMascota(mascota){
+        this.mascotas.push(mascota)
+      }
+
+      getMascotas(){
+        return this.mascotas.length
+      }
+
+      addBook(nombre, autor){
+        this.libros.push({nombre, autor})
+      }
+
+      getBooks(){
+        return this.libros.map(l => l.nombre)
+      }
+      }
+
+    let arg1 = 'Juan';
+    let arg2 = 'Pedrozo';
+    let arg3 = [{
+          nombre: 'Rebelion en la granja',
+          autor: 'George Orwell'
+        }];
+    const arg4 = ['sacha', 'fido']
+    const Juan = new Persona(arg1, arg2, arg3, arg4)
+    console.log(Juan.getFullName())
+    console.log(Juan.getMascotas())
+    Juan.addMascota('luffy')
+    console.log(Juan.getMascotas())
+    Juan.addBook('juan pedrito', 'perro')
+    Juan.addBook('asd', 'loco')
+    Juan.addBook('estado loco', 'perro')
+    Juan.addBook('skereee', 'perro')
+    console.log(Juan.getBooks())
+  </script>
+
+</body>
+</html>
