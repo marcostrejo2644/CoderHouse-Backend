@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+    <script
+      type="text/javascript"
+      src="https://unpkg.com/rxjs@%5E7/dist/bundles/rxjs.umd.min.js"
+    ></script>
+  </head>
+
+  <body>
+    <input type="text" value="" id="input" />
+    <input type="text" value="" id="output" />
+    <script>
+      const { Observable, map } = rxjs;
+
+      function reverseString(str) {
+        return str.split("").reverse().join("");
+      }
+
+      window.onload = function () {
+        const input = document.getElementById("input");
+        const output = document.getElementById("output");
+
+        const miCustomObservable = new Observable((observable) => {
+          input.addEventListener("input", (e) => {
+            let outputText = e.target.value;
+
+            if (outputText.match(/error/i))
+              observable.error(console.log("Ingresaron Error"));
+
+            if (outputText.match(/complete/i))
+              observable.complete(console.log("Ingresaron Complete"));
+
+            observable.next(outputText);
+          });
+        });
+
+        const miFuncionNext = (data) => {
+          output.value = data;
+        };
+
+        const miFuncionComplete = () => {
+          input.disabled = true;
+          input.value = "";
+          output.value = "";
+          sub.unsubscribe();
+        };
+
+        const miFuncionError = () => {
+          input.disabled = true;
+          input.value = "";
+          output.value = "";
+          sub.unsubscribe();
+        };
+
+        const handler = {
+          next: miFuncionNext,
+          error: miFuncionError,
+          complete: miFuncionComplete
+        };
+
+        const sub = miCustomObservable
+          .pipe(map((outputText) => reverseString(outputText)))
+          .subscribe(handler);
+
+        setTimeout(() => {
+          console.log("Cancele la suscrpicion");
+          input.disabled = true;
+          input.value = "";
+          output.value = "";
+          sub.unsubscribe();
+        }, 30000);
+      };
+    </script>
+  </body>
+</html>
