@@ -56,7 +56,7 @@ products
     products.readProducts();
   })
   .then(() => {
-    products.deleteProducts();
+    // products.deleteProducts();
   })
   .catch((e) => {
     console.log(e);
