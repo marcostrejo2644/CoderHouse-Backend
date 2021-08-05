@@ -10,6 +10,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/products/', require(path.join(__dirname, 'routes', 'products')));
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 const server = app.listen(app.get('port'), () => {
   console.log(`Server on http://localhost:${app.get('port')}`);
 });

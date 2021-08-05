@@ -15,8 +15,8 @@ router.get('/list/:id', getItemById);
 
 router.post('/save', addItem);
 
-router.put('/actualizar/:id', editItem);
+router.put('/edit/:id', editItem);
 
-router.delete('/borrar/:id', deleteItem);
+router.delete('/delete/:id', deleteItem);
 
 export default router;

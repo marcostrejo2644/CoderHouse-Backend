@@ -4,16 +4,19 @@ const products = [
     id: 5,
     product: 'atr',
     price: 500,
+    thumbnail: 'https://localhost:4000',
   },
   {
     id: 2,
     product: 'atr',
     price: 500,
+    thumbnail: 'https://localhost:4000',
   },
   {
     id: 1,
     product: 'atr',
     price: 500,
+    thumbnail: 'https://localhost:4000',
   },
 ];
 
@@ -61,13 +64,41 @@ productsController.addItem = async (req, res) => {
 
 productsController.editItem = async (req, res) => {
   try {
-    const id = req.params;
-    const {prduct, price, thumbnail} = req.body
-    const item = products.find((el) => el.id == id);
-    products.forEach(el => el.id === id ? )
-  } catch (error) {}
+    console.log(products);
+    const { id } = req.params;
+    const { product, price, thumbnail } = req.body;
+    const item = products.findIndex((el) => el.id == id);
+    if (item > -1) {
+      products[item] = {
+        id: item,
+        product,
+        price,
+        thumbnail,
+      };
+      res.status(200).json({ message: 'Edited with success' });
+    } else {
+      res.status(404).json({ message: 'Item not found' });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: 'Something goes wrong' });
+  }
 };
 
-productsController.deleteItem = async (req, res) => {};
+productsController.deleteItem = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const index = products.findIndex((el) => el.id == id);
+    if (index > -1) {
+      products.splice(index, 1);
+      res.status(200).json({ message: 'Object removed successfully' });
+    } else {
+      res.status(404).json({ message: 'Object dont found' });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: 'Something goes wrong' });
+  }
+};
 
 export default productsController;
