@@ -1,0 +1,24 @@
+{{#if productVerification}}
+  <h2>Productos</h2>
+  <table class="table margin-left">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Product</th>
+      <th scope="col">Price</th>
+      <th scope="col">Thumbnail</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each products}}
+      <tr >
+        <th class="row">{{id}}</th>
+        <td>{{product}}</td>
+        <td>{{price}}</td>
+        <td> <img src={{thumbnail}} width="50px" height="50px"> </td>
+      </tr>
+    {{/each}}
+  </tbody>
+  {{else}}
+  <p>No hay productos</p>
+{{/if}}
