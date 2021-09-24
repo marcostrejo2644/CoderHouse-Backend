@@ -1,33 +1,24 @@
 import { Request, Response } from 'express';
-import faker from 'faker';
 import Product from '../models/product.mongo';
+import FakerProduct from '../models/fakerModel';
 
 export async function getProductsFaker(req: Request, res: Response) {
   const { cant } = req.query;
   const products = [];
   const quantity = Number(cant) || 0;
-
-  const fakerProducts = {
-    title: faker.commerce.productName(),
-    price: Number(faker.commerce.price()),
-    thumbnail: faker.image.technics(),
-  };
-
-  if (typeof quantity === 'number') {
-    if (quantity === 0) {
-      return res.status(404).json({ message: 'There`s no products' });
-    } else {
-      for (let i = 0; i < quantity; i++) {
-        products.push(fakerProducts);
-      }
-      return res.json({ products });
+  if (quantity === 0) {
+    return res.status(404).json({ message: 'There`s no products' });
+  } else if (quantity > 0) {
+    for (let i = 0; i < quantity; i++) {
+      products.push(new FakerProduct());
     }
+    return res.json({ products });
+  } else {
+    for (let i = 0; i < 10; i++) {
+      products.push(new FakerProduct());
+    }
+    return res.json({ products });
   }
-
-  for (let i = 0; i < 10; i++) {
-    products.push(fakerProducts);
-  }
-  return res.json({ products });
 }
 
 export async function listAllProducts(req: Request, res: Response) {
