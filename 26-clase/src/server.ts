@@ -1,10 +1,11 @@
-import express, { Request, Response, NextFunction } from 'express';
-import handlebars from 'express-handlebars';
 import path from 'path';
 import * as http from 'http';
-import { socketService } from './services/socketIo';
+import express, { Request, Response, NextFunction } from 'express';
+import handlebars from 'express-handlebars';
 import session from 'express-session';
 import cookieParser from 'cookie-parser';
+import passport from './middlewares/auth';
+import { socketService } from './services/socketIo';
 import { StoreOptions } from './config/storeMongo';
 
 import './services/db';
@@ -44,6 +45,8 @@ export let logged = {
 // Middle
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Routes
 app.get('/login', async (req: Request, res: Response) => {
