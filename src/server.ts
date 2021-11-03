@@ -9,6 +9,7 @@ import cookieParser from 'cookie-parser';
 // import { StoreOptions } from './config/storeMongo';
 import compression from 'compression';
 import log4js from 'log4js';
+import cors from 'cors';
 
 import './services/db';
 
@@ -61,6 +62,7 @@ export let logged = {
 // Middle
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 // app.use(passport.initialize());
 // app.use(passport.session());
 // // Con Compression
