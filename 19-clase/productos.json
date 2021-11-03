@@ -1,7 +1,0 @@
-{"_id":{"$oid":"613a747119b7d19823362bcb"},"nombre":"Product1","precio":3350.0,"stock":100.0}
-{"_id":{"$oid":"613a747119b7d19823362bcc"},"nombre":"Product2","precio":4320.0,"stock":0.0}
-{"_id":{"$oid":"613a747119b7d19823362bce"},"nombre":"Product4","precio":4800.0,"stock":100.0}
-{"_id":{"$oid":"613a747119b7d19823362bd0"},"nombre":"Product6","precio":2500.0,"stock":100.0}
-{"_id":{"$oid":"613a747119b7d19823362bd1"},"nombre":"Product7","precio":1400.0,"stock":100.0}
-{"_id":{"$oid":"613a747119b7d19823362bd2"},"nombre":"Product8","precio":3500.0,"stock":100.0}
-{"_id":{"$oid":"613a74a419b7d19823362bd3"},"nombre":"new product","precio":1120.0,"stock":100.0}

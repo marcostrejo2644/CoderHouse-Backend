@@ -1,6 +1,0 @@
-{"_id":{"$oid":"613a741019b7d19823362bc5"},"email":"test1@hotmail.com","message":"test message"}
-{"_id":{"$oid":"613a741019b7d19823362bc6"},"email":"test2@hotmail.com","message":"another test message"}
-{"_id":{"$oid":"613a741019b7d19823362bc7"},"email":"test3@hotmail.com","message":"test 3"}
-{"_id":{"$oid":"613a741019b7d19823362bc8"},"email":"test4@hotmail.com","message":"test 4"}
-{"_id":{"$oid":"613a741019b7d19823362bc9"},"email":"test5@hotmail.com","message":"test"}
-{"_id":{"$oid":"613a741019b7d19823362bca"},"email":"test6@hotmail.com","message":"aweqw"}
