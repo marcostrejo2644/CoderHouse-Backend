@@ -1,7 +1,7 @@
 import path from 'path';
 import os from 'os';
 import express from 'express';
-import { renderForm } from '../controllers/index.controller';
+// import { renderForm } from '../controllers/index.controller';
 import passport from 'passport';
 import { fork } from 'child_process';
 
@@ -9,7 +9,7 @@ const randomFunction = path.resolve(__dirname, '../middleware/getRandoms');
 
 const router = express.Router();
 
-router.get('/', renderForm);
+router.get('/', (req: any, res: any) => res.render('form'));
 
 router.get('/auth/facebook', passport.authenticate('facebook'));
 

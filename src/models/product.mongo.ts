@@ -1,9 +1,9 @@
-import { Schema, model } from 'mongoose';
+// import { Schema, model } from 'mongoose';
 
-const productSchema = new Schema({
-  product: String,
-  price: Number,
-  thumbnail: String,
-});
+// const productSchema = new Schema({
+//   product: String,
+//   price: Number,
+//   thumbnail: String,
+// });
 
-export default model('Product', productSchema);
+// export default model('Product', productSchema);

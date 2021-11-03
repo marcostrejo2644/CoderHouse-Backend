@@ -4,16 +4,16 @@ import express, { Request, Response, NextFunction } from 'express';
 import handlebars from 'express-handlebars';
 import session from 'express-session';
 import cookieParser from 'cookie-parser';
-import passport from './middlewares/auth';
-import { socketService } from './services/socketIo';
-import { StoreOptions } from './config/storeMongo';
+// import passport from './middlewares/auth';
+// import { socketService } from './services/socketIo';
+// import { StoreOptions } from './config/storeMongo';
 import compression from 'compression';
 import log4js from 'log4js';
 
 import './services/db';
 
 import apiRoute from './routes/index';
-import productsRoute from './routes/products';
+// import productsRoute from './routes/products';
 
 log4js.configure({
   appenders: {
@@ -33,7 +33,7 @@ const app = express();
 
 const myHTTPServer = new http.Server(app);
 
-socketService.initWsService(myHTTPServer);
+// socketService.initWsService(myHTTPServer);
 
 // Settings
 app.set('views', path.join(__dirname, 'views'));
@@ -46,7 +46,7 @@ const hbs = handlebars.create({
 app.engine('hbs', hbs.engine);
 app.set('view engine', '.hbs');
 app.use(cookieParser());
-app.use(session(StoreOptions));
+// app.use(session(StoreOptions));
 const user = 'JuanPedro';
 const password = 'abc123';
 export let logged = {
@@ -61,9 +61,9 @@ export let logged = {
 // Middle
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(passport.initialize());
-app.use(passport.session());
-// Con Compression
+// app.use(passport.initialize());
+// app.use(passport.session());
+// // Con Compression
 // app.use(compression());
 
 // Routes
@@ -105,8 +105,9 @@ app.get('/logout', (req: Request, res: Response) => {
 });
 
 app.use('/', apiRoute);
-app.use('/api/products/', productsRoute);
+// app.use('/api/products/', productsRoute);
 
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
-export default myHTTPServer;
+// export default myHTTPServer;
+export default app;

@@ -1,19 +1,20 @@
-import mongoose from 'mongoose';
+// import mongoose from 'mongoose';
 
-const URI = 'mongodb://127.0.0.1:27017/ecommerce';
+// const URI =
+//   'mongodb+srv://marcos:Test123@cluster0.bci8s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 
-mongoose.connect(URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+// mongoose.connect(URI, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
 
-const db = mongoose.connection;
+// const db = mongoose.connection;
 
-db.once('open', (_) => {
-  console.log('Database is connected to:', URI);
-});
+// db.once('open', (_) => {
+//   console.log('Database is connected to:', URI);
+// });
 
-// to test the error stop mongod
-db.on('error', (err) => {
-  console.log(err);
-});
+// // to test the error stop mongod
+// db.on('error', (err) => {
+//   console.log(err);
+// });
